@@ -1,4 +1,5 @@
 
+const boxLoc = document.getElementById('boxLoc');
 const boxCondition = document.getElementById('boxCondition');
 const boxTemp = document.getElementById('boxTemp');
 const boxFeels = document.getElementById('boxFeels');
@@ -21,8 +22,11 @@ async function submitData () {
         const feels = await(respJson.current.feelslike_f);
         const wind = await(respJson.current.wind_mph);
         const condition = await(respJson.current.condition.text);
-        console.log(temp, feels, wind, condition);
+        const city = await(respJson.location.name);
+        const region = await(respJson.location.region);
+        console.log(city, region, temp, feels, wind, condition);
         
+        boxLoc.innerText = `${city}, ${region}`;
         boxCondition.innerText = `Current Weather: ${condition}`;
         boxTemp.innerText = `Temperature: ${temp} F`;
         boxFeels.innerText = `Feels Like: ${feels} F`;
