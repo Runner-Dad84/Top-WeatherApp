@@ -1,8 +1,10 @@
 
-
+const boxCondition = document.getElementById('boxCondition');
+const boxTemp = document.getElementById('boxTemp');
+const boxFeels = document.getElementById('boxFeels');
+const boxWind = document.getElementById('boxWind');
 
 async function submitData () {
-    const boxTemp = document.getElementById('boxTemp');
     let input = document.getElementById('locCity');
     const address = `http://api.weatherapi.com/v1/current.json?key=1abc13cc84da46599bb30023240701&q=${input.value}&aqi=no`
     
@@ -20,10 +22,19 @@ async function submitData () {
         const wind = await(respJson.current.wind_mph);
         const condition = await(respJson.current.condition.text);
         console.log(temp, feels, wind, condition);
-        return(temp, feels, wind, condition);
+        
+        boxCondition.innerText = `Current Weather: ${condition}`;
+        boxTemp.innerText = `Temperature: ${temp} F`;
+        boxFeels.innerText = `Feels Like: ${feels} F`;
+        boxWind.innerText = `Wind: ${wind} mph`;
+        
+
     } catch (err) {
             console.log(err.name);
             console.log(err.message);
     }   
 
 };
+
+
+
