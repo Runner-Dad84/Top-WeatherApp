@@ -1,4 +1,8 @@
-p {
-    color: blue;
-    font-size: 2rem;
+div.temp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: .2rem solid black;
+    border-radius: 1rem;
+    background-color: lightgray;
 }
